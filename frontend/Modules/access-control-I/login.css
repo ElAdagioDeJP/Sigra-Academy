@@ -21,9 +21,7 @@
 
 body {
   font-family: var(--font);
-  background: radial-gradient(circle at 20% 20%, rgba(37, 99, 235, 0.08), transparent 35%),
-    radial-gradient(circle at 80% 0%, rgba(16, 185, 152, 0.08), transparent 30%),
-    var(--neutral-50);
+  background: var(--neutral-100);
   color: var(--neutral-900);
   min-height: 100vh;
 }
@@ -31,11 +29,13 @@ body {
 .page {
   max-width: 480px;
   margin: 0 auto;
-  padding: 56px 20px 32px;
+  padding: 72px 20px;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   gap: 16px;
   align-items: center;
+  justify-content: center;
   text-align: center;
 }
 
@@ -139,6 +139,14 @@ body {
   color: var(--neutral-500);
 }
 
+.input-error {
+  color: var(--red);
+  font-size: 13px;
+  margin-top: 6px;
+  text-align: left;
+  display: none;
+}
+
 .ghost-button {
   border: none;
   background: transparent;
@@ -146,8 +154,13 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  cursor: default;
+  cursor: pointer;
   color: var(--neutral-500);
+  transition: color 0.2s ease;
+}
+
+.ghost-button:hover {
+  color: var(--neutral-900);
 }
 
 .primary-button {
@@ -159,9 +172,14 @@ body {
   font-weight: 700;
   font-size: 15px;
   padding: 14px 16px;
-  cursor: default;
+  cursor: pointer;
   box-shadow: 0 14px 26px rgba(37, 99, 235, 0.35);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.primary-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 28px rgba(37, 99, 235, 0.4);
 }
 
 .primary-button:active {
@@ -175,6 +193,14 @@ body {
   font-weight: 600;
   font-size: 14px;
   margin-top: -6px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.link-text:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
 }
 
 .footer {
@@ -188,12 +214,16 @@ body {
   padding-bottom: 8px;
 }
 
-.footer span {
+.footer a {
   position: relative;
   padding-bottom: 2px;
+  color: var(--neutral-500);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s ease;
 }
 
-.footer span::after {
+.footer a::after {
   content: "";
   position: absolute;
   left: 0;
@@ -204,7 +234,11 @@ body {
   transition: background 0.2s ease;
 }
 
-.footer span:hover::after {
+.footer a:hover {
+  color: var(--neutral-900);
+}
+
+.footer a:hover::after {
   background: var(--neutral-100);
 }
 

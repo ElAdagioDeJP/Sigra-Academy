@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SIGRA | Inicio de Sesión</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+  <main class="page">
+    <header class="brand">
+      <img class="brand-logo" src="../../Public/resources/Modulo-1/logo.png" alt="Logo SIGRA" />
+      <p class="brand-text"><span class="brand-accent">SIGRA:</span> Sistema Integral de Gestión y Registro Académico</p>
+    </header>
+
+    <h1 class="page-title">Inicio de Sesión</h1>
+
+    <section class="card" aria-label="Formulario de inicio de sesión">
+      <form class="form" action="#" method="post" novalidate>
+        <div class="input-group">
+          <label class="input-label" for="usuario">Correo</label>
+          <div class="input-control">
+            <span class="input-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z" stroke="currentColor" stroke-width="1.5" />
+                <path d="M4 20.5c0-3.59 3.582-6.5 8-6.5s8 2.91 8 6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+              </svg>
+            </span>
+            <input id="usuario" name="usuario" type="email" placeholder="Ingresa tu correo" aria-label="Correo" autocomplete="email" />
+          </div>
+          <p class="input-error" id="email-error" aria-live="polite"></p>
+        </div>
+
+        <div class="input-group">
+          <label class="input-label" for="contrasena">Contraseña</label>
+          <div class="input-control">
+            <span class="input-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="4" y="10" width="16" height="10" rx="2" stroke="currentColor" stroke-width="1.5" />
+                <path d="M8 10V7a4 4 0 1 1 8 0v3" stroke="currentColor" stroke-width="1.5" />
+              </svg>
+            </span>
+            <input id="contrasena" name="contrasena" type="password" placeholder="Ingresa tu contraseña" aria-label="Contraseña" autocomplete="current-password" />
+            <button class="ghost-button" type="button" aria-label="Mostrar u ocultar contraseña">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 12s3.5-6 9-6 9 6 9 6-3.5 6-9 6-9-6-9-6Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <circle cx="12" cy="12" r="2.5" stroke="currentColor" stroke-width="1.5" />
+              </svg>
+            </button>
+          </div>
+          <p class="input-error" id="password-error" aria-live="polite"></p>
+        </div>
+
+        <button class="primary-button" type="submit" id="login-button">Acceder</button>
+        <a class="link-text" href="#">¿Olvidaste tu contraseña?</a>
+      </form>
+    </section>
+
+    <footer class="footer">
+      <a href="#">Ayuda</a>
+      <a href="#">Términos de uso</a>
+      <a href="#">Privacidad</a>
+    </footer>
+  </main>
+  <script>
+    (function () {
+      const API_BASE = 'http://localhost:3000/api/access-control'
+      const form = document.querySelector('.form')
+      const emailInput = document.getElementById('usuario')
+      const passwordInput = document.getElementById('contrasena')
+      const emailError = document.getElementById('email-error')
+      const passwordError = document.getElementById('password-error')
+      const loginButton = document.getElementById('login-button')
+
+      function setError(element, message) {
+        if (!element) return
+        element.textContent = message
+        element.style.display = message ? 'block' : 'none'
+      }
+
+      function clearErrors() {
+        setError(emailError, '')
+        setError(passwordError, '')
+      }
+
+      async function fetchUserByEmail(email) {
+        const response = await fetch(`${API_BASE}/users/email/${encodeURIComponent(email)}`)
+        if (response.status === 404) return null
+        if (!response.ok) throw new Error('Error al consultar el usuario')
+        return response.json()
+      }
+
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault()
+        clearErrors()
+
+        const email = emailInput.value.trim()
+        const password = passwordInput.value.trim()
+
+        if (!email) {
+          setError(emailError, 'Ingresa tu correo')
+          return
+        }
+
+        if (!password) {
+          setError(passwordError, 'Ingresa tu contraseña')
+          return
+        }
+
+        loginButton.disabled = true
+        loginButton.textContent = 'Validando...'
+
+        try {
+          const user = await fetchUserByEmail(email)
+
+          if (!user) {
+            setError(emailError, 'No se encontró el correo')
+            return
+          }
+
+          const storedPassword = user.password_hash || ''
+                  const roleId = Number(user.role_id)
+
+                  if (password === storedPassword && roleId === 1) {
+                    window.location.href = './user-table.html'
+                    return
+                  }
+
+                  if (password === storedPassword && roleId !== 1) {
+                    setError(passwordError, 'No tienes módulo todavía')
+                    return
+                  }
+
+                  setError(passwordError, 'Contraseña incorrecta')
+        } catch (error) {
+          setError(emailError, 'No se pudo conectar con el servidor')
+          console.error('Login error:', error)
+        } finally {
+          loginButton.disabled = false
+          loginButton.textContent = 'Acceder'
+        }
+      })
+    })()
+  </script>
+</body>
+</html>
