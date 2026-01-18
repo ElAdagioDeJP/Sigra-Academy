@@ -32,10 +32,11 @@ header {
   max-width: 1180px;
   width: 100%;
   margin: 0 auto;
-  padding: 12px 18px 12px 6px;
+  padding: 12px 24px;
   display: flex;
   align-items: center;
   gap: 28px;
+  height: 60px;
 }
 
 .brand {
@@ -47,7 +48,7 @@ header {
 }
 
 .brand-logo {
-  height: 60px;
+  height: 40px;
   width: auto;
   display: block;
 }
@@ -63,15 +64,13 @@ header {
   gap: 20px;
   font-weight: 500;
   font-size: 0.98rem;
-  margin-left: auto;
+  margin: auto;
 }
 
 .nav-links a {
   color: var(--muted);
   text-decoration: none;
-  padding: 6px 0;
-  border-bottom: 2px solid transparent;
-  transition: color 0.2s ease, border-color 0.2s ease;
+  gap: 24px;
 }
 
 .nav-links a:hover {
@@ -80,7 +79,6 @@ header {
 
 .nav-links .active {
   color: var(--text);
-  border-color: var(--text);
 }
 
 .profile-menu {
@@ -340,13 +338,12 @@ tbody tr:last-child td {
 
 @media (max-width: 768px) {
   .navbar {
-    padding: 14px 18px;
-    gap: 18px;
-  }
-
-  .nav-links {
-    flex-wrap: wrap;
-    gap: 12px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding: 10px 15px;
+    gap: 15px;
+    -webkit-overflow-scrolling: touch;
   }
 
   main {
