@@ -185,3 +185,88 @@ header {
     -webkit-overflow-scrolling: touch;
   }
 }
+/* --- (LISTA DE NOTIFICACIONES) --- */
+
+/* Contenedor de la lista (ajuste para quitar el borde punteado al cargar) */
+.notification-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Tarjeta individual */
+.notification-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius); /* Usa los 14px definidos */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.notification-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  border-color: var(--primary);
+}
+
+/* Cabecera de la tarjeta: Título y Fecha */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.card-title {
+  font-weight: 600;
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.card-date {
+  font-size: 0.85rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+/* Cuerpo y descripción */
+.card-body p {
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* Footer: Estado */
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* Alineado a la derecha */
+}
+
+.status-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Variantes de estado */
+.status-enviada {
+  background-color: #dcfce7; /* Verde suave */
+  color: #166534;
+}
+
+.status-borrador {
+  background-color: #f3f4f6; /* Gris */
+  color: #4b5563;
+}
+
+.status-error {
+  background-color: #fee2e2; /* Rojo suave */
+  color: #991b1b;
+}
