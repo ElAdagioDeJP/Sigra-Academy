@@ -1,12 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // --- REFERENCIAS DOM ---
     const headerContainer = document.getElementById('subject-header-container');
     const activitiesContainer = document.getElementById('activities-container');
     const resourcesContainer = document.getElementById('resources-container');
 
-    // --- 1. DATOS SIMULADOS (MOCKS) ---
-    
     const mockAsignatura = {
         id: "MAT-03",
         nombre: "Matemática III",
@@ -60,10 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
             tipo: "link", peso: "GeoGebra", url: "#"
         }
     ];
-
-    // --- 2. FUNCIONES DE RENDERIZADO ---
-
-    // Renderiza el Header de la Asignatura
     function renderHeader(data) {
         if (!data) return;
         
@@ -90,7 +83,6 @@ document.addEventListener('DOMContentLoaded', () => {
         headerContainer.classList.remove('skeleton-loading');
     }
 
-    // Calcula tiempo restante y estado visual
     function calcularTiempoRestante(fechaLimite) {
         const ahora = new Date();
         const limite = new Date(fechaLimite);
@@ -104,7 +96,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return { texto: `Vence en ${horas} horas`, esTarde: false };
     }
 
-    // Renderiza la lista de Actividades
     function renderActivities(actividades) {
         activitiesContainer.innerHTML = ''; 
 
@@ -155,7 +146,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Renderiza la lista de Recursos
     function renderResources(recursos) {
         resourcesContainer.innerHTML = '';
 
@@ -192,5 +182,5 @@ document.addEventListener('DOMContentLoaded', () => {
         renderHeader(mockAsignatura);
         renderActivities(mockActividades);
         renderResources(mockRecursos);
-    }, 1500); // 1.5 segundos de Skeleton Loading
+    }, 600); 
 });

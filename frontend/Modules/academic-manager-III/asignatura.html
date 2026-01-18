@@ -12,7 +12,7 @@
 <body>
   
   <header class="main-header">
-    <nav class="navbar" aria-label="Barra de navegación principal">
+    <nav class="navbar">
       <div class="brand">
         <img class="brand-logo" src="../../Public/resources/Modulo-1/logo.png" alt="Logo SIGRA" onerror="this.style.display='none'"/> 
         <span>SIGRA</span>
@@ -22,25 +22,22 @@
         <a href="../access-control-I/user-table.html">Inicio</a>
         <a href="#" class="active">Asignaturas</a>
         <a href="calificaciones.html">Calificaciones</a>
-        <a href="#">Docentes</a>
-        <a href="#">Reportes</a>
       </div>
 
       <div class="profile-menu">
-        <button class="bell" type="button" aria-label="Notificaciones">
+        <button class="bell" type="button" onclick="window.location.href='../notifications-VII/notification.html'">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0" />
           </svg>
         </button>
-        <button class="profile-button">LF</button>
+        <button class="profile-button">AG</button>
       </div>
     </nav>
   </header>
 
   <main class="content-wrapper">
     
-    <section id="subject-header-container" class="subject-header skeleton-loading">
-        </section>
+    <section id="subject-header-container" class="subject-header skeleton-loading"></section>
 
     <div class="main-grid">
       

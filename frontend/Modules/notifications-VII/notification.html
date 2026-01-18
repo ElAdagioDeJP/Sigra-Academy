@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SIGRA | Notificaciones</title>
+  <link rel="stylesheet" href="notification.css" />
+  </head>
+<body>
+
+  <header>
+    <nav class="navbar">
+      <div class="brand">
+        <img class="brand-logo" src="../../Public/resources/Modulo-1/logo.png" alt="Logo SIGRA" onerror="this.style.display='none'"/>
+        <span>SIGRA</span>
+      </div>
+
+      <div class="nav-links">
+        <a href="../access-control-I/user-table.html">Inicio</a>
+        <a href="../academic-manager-III/asignatura.html">Asignaturas</a>
+        <a href="../academic-manager-III/calificaciones.html">Calificaciones</a> 
+      </div>
+
+      <button class="bell" type="button">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0" />
+        </svg>
+      </button>
+
+      <div class="profile-menu">
+        <button class="profile-button">AG</button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="main-container">
+    
+    <div class="page-header">
+      <h1>Centro de Notificaciones</h1>
+      <p class="subtitle">Gestiona y revisa las alertas enviadas a la comunidad académica.</p>
+    </div>
+
+    <section class="filters-section">
+        <div class="filter-group">
+            <label for="fecha-filter" class="filter-label">Filtrar por Fecha</label>
+            <div class="input-control">
+                <input type="date" id="fecha-filter" class="filter-input" />
+            </div>
+        </div>
+
+        <div class="filter-group">
+            <label for="estado-filter" class="filter-label">Estado del envío</label>
+            <div class="input-control">
+                <select id="estado-filter" class="filter-input">
+                    <option value="todas">Todas las notificaciones</option>
+                    <option value="enviadas">Enviadas</option>
+                    <option value="borradores">Borradores</option>
+                </select>
+            </div>
+        </div>
+
+        <button class="ghost-btn filter-btn">Aplicar Filtros</button>
+    </section>
+
+    <div id="notifications-list-container" class="list-placeholder">
+        <p style="text-align: center; color: #9ca3af; padding: 40px;">
+            Espacio para el componente
+        </p>
+    </div>
+
+  </main>
+
+</body>
+</html>

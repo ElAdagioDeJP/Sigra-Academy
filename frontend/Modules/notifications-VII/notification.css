@@ -1,0 +1,187 @@
+:root {
+  --bg-page: #e5e7eb;
+  --bg-surface: #ffffff;
+  --border: #cbd5e1;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --primary: #2563eb;
+  --radius: 14px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background: var(--bg-page);
+  color: var(--text);
+}
+
+header {
+  background: var(--bg-surface);
+  border-bottom: 2px solid var(--border);
+}
+
+.navbar {
+  max-width: 1180px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  height: 60px;
+}
+
+.brand {
+  display: flex;
+  gap: 12px;
+  font-weight: 700;
+  color: var(--primary);
+  font-size: 1.25rem;
+  align-items: center;
+}
+
+.brand-logo {
+  height: 40px;
+  width: auto;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+  font-weight: 500;
+  margin: auto;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--muted);
+  transition: 0.2s;
+}
+
+.nav-links a.active,
+.nav-links a:hover {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.profile-menu {
+  display: flex;
+  gap: 12px;
+}
+
+.bell,
+.profile-button {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: #f9fafb;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 24px;
+}
+
+.page-header {
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.page-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.subtitle {
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+
+.filters-section {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: flex-end;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.filter-group {
+  flex: 1;
+  min-width: 200px;
+}
+
+.filter-label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.filter-input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #f9fafb;
+  color: var(--text);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.filter-input:focus {
+  border-color: var(--primary);
+  background: #fff;
+}
+
+.ghost-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--text);
+  height: 42px;
+}
+
+.ghost-btn:hover {
+  background: #f3f4f6;
+}
+
+.list-placeholder {
+  border: 2px dashed var(--border);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.5);
+  min-height: 200px;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding: 10px 15px;
+    gap: 15px;
+    -webkit-overflow-scrolling: touch;
+  }
+}
