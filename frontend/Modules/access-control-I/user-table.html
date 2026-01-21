@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SIGRA | Gestión de Usuarios</title>
   <link rel="stylesheet" href="user-table.css" />
+  <script src="auth-guard.js"></script>
 </head>
 <body>
   <!-- Navbar superior -->
@@ -265,7 +266,9 @@
 
       async function loadUsers() {
         try {
-          const response = await fetch(`${API_BASE}/users`)
+          const response = await fetch(`${API_BASE}/users`, {
+            headers: { ...getAuthHeaders() }
+          })
           if (!response.ok) throw new Error('No se pudo obtener usuarios')
           const data = await response.json()
           allUsers = data.users || []
